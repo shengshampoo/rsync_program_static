@@ -26,7 +26,7 @@ make install PREFIX=/usr
 # rsync
 cd $WORKSPACE
 aa=3.4.1
-curl -sL https://download.samba.org/pub/rsync/src/rsync-$ab.tar.gz | tar x --gzip
+curl -sL https://download.samba.org/pub/rsync/src/rsync-$aa.tar.gz | tar x --gzip
 cd rsync-$aa
 LDFLAGS="-static --static -no-pie -s"  ./configure --prefix=/usr/local/rsyncmm --disable-roll-simd --enable-roll-asm --enable-md5-asm --enable-ipv6 --enable-acl-support --disable-md2man
 make
