@@ -28,7 +28,13 @@ cd $WORKSPACE
 aa=3.4.1
 curl -sL https://download.samba.org/pub/rsync/src/rsync-$aa.tar.gz | tar x --gzip
 cd rsync-$aa
+if [ $(uname -m) == "x86_64" ]; then
 LDFLAGS="-static --static -no-pie -s"  ./configure --prefix=/usr/local/rsyncmm --disable-roll-simd --enable-roll-asm --enable-md5-asm --enable-ipv6 --enable-acl-support --disable-md2man
+elif [ $(uname -m) == "aarch64" ]; then
+LDFLAGS="-static --static -no-pie -s"  ./configure --prefix=/usr/local/rsyncmm --disable-roll-simd --enable-roll-asm --enable-ipv6 --enable-acl-support --disable-md2man
+else
+ exit 1
+fi 
 make
 make install
 
