@@ -15,6 +15,10 @@ cd libressl-$aa
 LDFLAGS="-static -no-pie -s" ./configure --prefix=/usr --disable-tests -disable-shared --enable-static
 make
 make install
+make distclean
+LDFLAGS="-static -no-pie -s" ./configure --prefix=/usr/local/libresslmm --disable-tests -disable-shared --enable-static
+make
+make install
 
 # xxHash
 cd $WORKSPACE
@@ -41,5 +45,7 @@ make install
 
 cd /usr/local
 tar vcJf ./rsyncmm.tar.xz rsyncmm
+tar vcJf ./libresslmm.tar.xz libresslmm
 
-mv ./rsyncmm.tar.xz /work/artifact/
+mv ./*mm.tar.xz /work/artifact/
+
