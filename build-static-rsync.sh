@@ -12,11 +12,7 @@ cd $WORKSPACE
 aa=4.2.1
 curl -sL https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-$aa.tar.gz | tar x --gzip
 cd libressl-$aa
-CFLAGS="$CFLAGS -static" LDFLAGS="-static --static -no-pie -s" ./configure --prefix=/usr --disable-tests -disable-shared --enable-static
-make
-make install
-make distclean
-CFLAGS="$CFLAGS -static" LDFLAGS="-static --static -no-pie -s" ./configure --prefix=/usr/local/libresslmm --disable-tests -disable-shared --enable-static
+LDFLAGS="-static --static -no-pie -s" ./configure --prefix=/usr --disable-tests -disable-shared --enable-static
 make
 make install
 
@@ -45,7 +41,6 @@ make install
 
 cd /usr/local
 tar vcJf ./rsyncmm.tar.xz rsyncmm
-tar vcJf ./libresslmm.tar.xz libresslmm
 
-mv ./*mm.tar.xz /work/artifact/
+mv ./rsyncmm.tar.xz /work/artifact/
 
