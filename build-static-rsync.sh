@@ -9,7 +9,7 @@ mkdir -p /work/artifact
 
 # libressl
 cd $WORKSPACE
-aa=4.2.1
+aa=4.3.2
 curl -sL https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-$aa.tar.gz | tar x --gzip
 cd libressl-$aa
 LDFLAGS="-static --static -no-pie -s" ./configure --prefix=/usr --disable-tests -disable-shared --enable-static
@@ -25,7 +25,7 @@ make install PREFIX=/usr
 
 # rsync
 cd $WORKSPACE
-aa=3.4.1
+aa=3.4.4
 curl -sL https://download.samba.org/pub/rsync/src/rsync-$aa.tar.gz | tar x --gzip
 cd rsync-$aa
 if [ $(uname -m) == "x86_64" ]; then
